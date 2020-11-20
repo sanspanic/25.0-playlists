@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} Add New Playlist {% endblock %}
+
+{% block content %}
+
+<h1 class='mb-4 display-2'>Create new playlist</h1> 
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {% for field in form if field.widget.input_type != 'hidden'%}
+    <p>
+      {{field.label}}
+      {{field(class_='form-control')}}
+
+      {% for err in field.errors %}
+      {{err}}
+      {% endfor %}
+    </p>
+    {% endfor %}
+    <button class='btn btn-primary'>Submit</button>
+  </form>
+
+{% endblock %}
